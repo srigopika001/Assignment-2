@@ -1,0 +1,30 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class ColorChoiceBox extends Application {
+    @Override
+    public void start(Stage stage) {
+        Label label = new Label("Select a color");
+        ChoiceBox<String> choiceBox = new ChoiceBox<>();
+        choiceBox.getItems().addAll("Red", "Green", "Blue", "Yellow");
+
+        choiceBox.setOnAction(e -> {
+            String color = choiceBox.getValue();
+            label.setText("You selected: " + color);
+        });
+
+        VBox root = new VBox(10, choiceBox, label);
+        Scene scene = new Scene(root, 250, 150);
+        stage.setTitle("Color ChoiceBox");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
